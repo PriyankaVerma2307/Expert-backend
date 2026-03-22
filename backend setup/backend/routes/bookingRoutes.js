@@ -31,12 +31,12 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const { expertId, date, userEmail } = req.query;
+    const { expertId, date, email } = req.query;
 
     const query = {};
     if (expertId) query.expertId = expertId;
     if (date) query.date = date;
-    if (userEmail) query.email = userEmail;
+    if (email) query.email = email;
 
     const bookings = await Booking.find(query).sort({ date: 1, slot: 1 });
     res.json(bookings);
